@@ -91,6 +91,89 @@ Mochawesome Report Generator:
 -- The second library we will need is mochawesome-merge library.
 
 
+How to Run Cypress Headless:
+-----------------------------
+-- This means we want to run cypress test in our console not in the browser.
+-- Used when you are using CI/CD integration and dont have to interact with the browser.
+-- For that we have to use the command "npx cypress run --headless"
+-- It is recommended to use the browser way of testing not this headless way.
+
+Fixtures folder:
+----------------
+-- Fixtures may hum json file ko add kr skty hain.
+-- Fixtures k throug hum Data Driven testing kr skty hian by saving the data in the json format.
+-- Fixtures ko hum test script may simple cy.fixture kr k call kr skty hain aur action perform kr skty hain.
+
+Viewport in cypress:
+-------------------
+-- Is k through hum different viewport ko use kr skty hain for responsive testing.
+-- cy.viewport(width,height) etc.
+-- we can simulatneously use any viewport like desktop and mobile etc.
+
+cy.go():
+-------
+-- there are multiple options to use with this command.
+-- go back, forward etc.
+
+cy.url():
+--------
+-- should return the current url you are at.
+-- we can also do more things like should expect etc.
+
+
+cy.log():
+---------
+-- is used to log the data on the cypress console.
+-- Do not use cy.log("Current url value", cy.url()) instead of this we can use;
+-- cy.url().then((value) => {
+	cy.log("Current url value", value)
+})
+
+
+it.only:
+--------
+-- if we want to run only specific block of it or only specific test case then we can use .only with the 'it' command.
+
+
+before:
+-------
+-- In this we can set all the things that we need only once before all other work like login credential etc.
+-- this block will run before all other commands.
+
+
+beforeEach():
+-------------
+-- we can use this if we want to put something that is repetitive so put that in this block and it will run 
+-- beforeEach( () => {
+	//code will go here
+})
+
+-- In before each we can also set the login auth token so that we dont have to login again and again.
+-- cy.then( () => {
+            window.localStorage.setItem('token_variable_in_local_storage', value-of-token)
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
