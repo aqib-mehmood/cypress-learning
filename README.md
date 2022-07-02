@@ -21,6 +21,9 @@ Cypress Setting up:
 -- After that in VS code you can add a test file in the format "fileName.cy.js" under the e2e folder.
 -- At the top of each file mention "/// <reference types="Cypress"/>" for autocompleting.
 -- Now you can write the test cases in the same syntax as the chai mocha.
+
+watchForFileChanges:
+--------------------
 -- Use this command ""watchForFileChanges": true" in the "cypress.json" to terminate the auto running of cypress test upon saving file.
 
 Element locator or Selector Playground:
@@ -30,6 +33,7 @@ Element locator or Selector Playground:
 Custom timeout at command level:
 --------------------------------
 -- We can add a custom timeout at command level by using the command "cy.get('className, {timeout: 6000}').click()"
+-- we can also use the timeout as {timeout: 10 * 1000} means delay for 10 seconds.
 -- Cypress may jou default timeout ha woh 4second ka ha hum usko change kr skty hain at command level as well as global level.
 -- For global level we have to set the timeout in the cypress.json file using the command "defaultCommandTimeout" : 500
 
@@ -134,15 +138,18 @@ it.only:
 --------
 -- if we want to run only specific block of it or only specific test case then we can use .only with the 'it' command.
 
-
-before:
--------
+Hooks in Cypress:
+==================
+1- before:
+-----------
+-- Run one time before all test start.
 -- In this we can set all the things that we need only once before all other work like login credential etc.
 -- this block will run before all other commands.
 
 
-beforeEach():
--------------
+2- beforeEach():
+----------------
+-- Run before each individual test start.
 -- we can use this if we want to put something that is repetitive so put that in this block and it will run 
 -- beforeEach( () => {
 	//code will go here
@@ -153,7 +160,160 @@ beforeEach():
             window.localStorage.setItem('token_variable_in_local_storage', value-of-token)
         })
 
+3- afer:
+--------
+-- Run one time after all the test finished.
 
+4- afterEach:
+-------------
+-- Run after each individual test finished.
+
+
+
+cy.pause():
+-----------
+-- this will pause the cypress code execution.
+-- not pause the browser loading or behavior.
+
+
+Cypress Plugin:
+----------------
+-- we can use different plugins in cypress to improve or enhance cypress functionality.
+-- One the very useful plugin is cypress-testing-library that is available at https://github.com/testing-library/cypress-testing-library
+-- go to the documentation and checkout the guide on how to install this.
+-- this plugin enhanced the cy command in cypress.
+-- for example cy.findBy and findAllBy anything.
+-- after installing the plugin must import the plugin in the commands.js file as we are using the custom commands.
+
+
+Environment variable:
+---------------------
+-- we can set environment variable in the file cypress.config.js
+-- env var like we can set base-url.
+
+
+Note about cypress and non-cypress commands:
+---------------------------------------------
+-- if we have non cypress commands like js code then it will not wait for the cypress commands to execute first. 
+-- this means the non cypress commnads will run first.
+-- cypress commands runs in a sequence and wait for the previos commands to complete then next will run.
+
+
+Use of .then() to handle non-cypress promises:
+-----------------------------------------------
+-- we can use .then(), if we want to do something after the previous action completed.
+-- cy.url().then((value) => {
+	cy.log("Current url value", value)
+})
+
+
+delay: 100:
+------------
+-- Delay each keypress by 0.1 sec
+  .type('slow.typing@email.com', { delay: 100 })
+
+
+force: true:
+-------------
+-- we can use this to forcefully do something.
+-- for example disable field may type krny k lie type ko force true krwana.
+
+
+.blur():
+---------
+-- blur is opposite to focus.
+-- blur means after performing action on the focused element call the blur inorder to move the cursor from that element.
+-- matlab pehly me us field may likh skta tha ab ni likh skta etc.
+
+.clear():
+---------
+-- To clear on a DOM element, use the .clear() command.
+
+
+.prev() and .next():
+--------------------
+-- prev() gives immediate previous element.
+-- next() gives immediate next element.
+
+
+.submit():
+----------
+-- To submit a form on a DOM element, use the .submit() command.
+-- For this we have to select the whole form and the find command to find elements and then we can submit the form using .submit().
+
+
+.click(x,y):
+------------
+-- click() also work with  x and y coordinate
+-- that controls where the click occurs
+
+
+mulitple: true:
+---------------
+-- click multiple elements by passing multiple: true
+
+
+.dblclick():
+------------
+-- To double click a DOM element, use the .dblclick() command.
+
+
+rightclick():
+--------------
+-- To right click a DOM element, use the .rightclick() command.
+
+
+trigger and invoke:
+-------------------
+-- To trigger an event on a DOM element, use the .trigger() command.
+
+
+.check():
+---------
+-- To check a checkbox or radio, use the .check() command.
+-- By default, .check() will check all
+-- Matching checkbox or radio elements in succession, one after another
+-- check() also accepts a value argument and check only that particular value element.
+-- .check() accepts an array of values means multiple checks.
+
+
+.uncheck():
+-----------
+-- To uncheck a checkbox or radio, use the .uncheck() command.
+-- By default, .uncheck() will uncheck all matching
+
+
+.select():
+---------
+-- To select an option in a select, use the .select() command.
+-- when getting multiple values, invoke "val" method first
+
+
+.scrollIntoView():
+------------------
+-- To scroll an element into view, use the .scrollintoview() command.
+-- scroll the button into view, as if the user had scrolled using the .scrollIntoView().
+
+cy.scrollTo():
+--------------
+-- To scroll the window or a scrollable element to a specific position, use the cy.scrollTo() command.
+-- If we use only  cy.scrollTo('bottom') then the whole window will scroll to the bottom.
+-- But if we use cy.get(element).scrollTo('bottom') then only this element will move to bottom.
+-- or you can scroll to a specific coordinate: (x axis, y axis) in pixels
+-- or you can scroll to a specific percentage of the (width, height) of the element
+-- control the duration of the scroll (in ms) { duration: 5*1000 })
+
+
+How to multiple select dropdown:
+
+
+How to select value in searchable dropdown:
+
+
+How to handle alerts:
+
+
+How to upload File:
 
 
 
