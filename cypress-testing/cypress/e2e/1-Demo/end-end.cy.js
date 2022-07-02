@@ -51,17 +51,17 @@ describe('Test Suite', () => {
 // use of before, beforeEach, after, afterEach
 describe('Test Suite 02', () => {
     // auth token for codedamn login site
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lc3NhZ2VzdXBwcnQiLCJfaWQiOiI2MmJkNGE2MjZjNGY2MTAwMDkzMWIwZWMiLCJuYW1lIjoiTWVzc2FnZSBTdXBwb3J0IiwiaWF0IjoxNjU2NTcyNTE2LCJleHAiOjE2NjE3NTY1MTZ9.hPJ4Tf92co2shEA1hcJxnwWVqs29nMo15cpOvf5T9Lg'
+    // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lc3NhZ2VzdXBwcnQiLCJfaWQiOiI2MmJkNGE2MjZjNGY2MTAwMDkzMWIwZWMiLCJuYW1lIjoiTWVzc2FnZSBTdXBwb3J0IiwiaWF0IjoxNjU2NTcyNTE2LCJleHAiOjE2NjE3NTY1MTZ9.hPJ4Tf92co2shEA1hcJxnwWVqs29nMo15cpOvf5T9Lg'
     
     // use of before 
-    before(() => {
-        cy.visit('https://codedamn.com/')
-        // setting the localstorage var for login
-        cy.then(() => {
-            cy.log('setting the auth token value in local storage')
-            window.localStorage.setItem('__auth__token', token)
-        })
-    })
+    // before(() => {
+    //     cy.visit('https://codedamn.com/')
+    //     // setting the localstorage var for login
+    //     cy.then(() => {
+    //         cy.log('setting the auth token value in local storage')
+    //         window.localStorage.setItem('__auth__token', token)
+    //     })
+    // })
     
 
     // use of beforeEach, this will run after 'before'
@@ -73,22 +73,23 @@ describe('Test Suite 02', () => {
     // test case  01 
     // login to the codedamn
     //trying to visit the public profile of codedamn
-    it('Visiting codedamn', () => {
+    // it('Visiting codedamn', () => {
 
-        //getting the current url
-        cy.url().then((value) => {
-            cy.log('The current url is = ', value)
-        })
+    //     //getting the current url
+    //     cy.url().then((value) => {
+    //         cy.log('The current url is = ', value)
+    //     })
 
-        cy.wait(20000)
-        cy.get(':nth-child(3) > .flex-shrink-0 > :nth-child(1) > #user-menu > [style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"] > .rounded-full').click()
+    //     cy.wait(20000)
+    //     cy.get(':nth-child(3) > .flex-shrink-0 > :nth-child(1) > #user-menu > [style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"] > .rounded-full').click()
         
-        //clicking the public profile menu item
-        // removing the target as it is opening link in new tab that cypress is not supporting
-        cy.get(':nth-child(3) > .flex-shrink-0 > .max-w-none > [href="/user/messagesupprt"]').invoke('removeAttr', 'target').click()
+    //     //clicking the public profile menu item
+    //     // removing the target as it is opening link in new tab that cypress is not supporting
+    //     cy.get(':nth-child(3) > .flex-shrink-0 > .max-w-none > [href="/user/messagesupprt"]').invoke('removeAttr', 'target').click()
         
-        // verifying the public profile page url
-        cy.url({timeout: 20000}).should('contain', '/user/messagesupprt')
-    })
+    //     // verifying the public profile page url
+    //     cy.url({timeout: 20000}).should('contain', '/user/messagesupprt')
+    // })
 
+    
 })
