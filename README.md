@@ -1,4 +1,5 @@
-# cypress-learning
+# Cypress Learning 
+
 Cypress:
 ========
 -- Cypress is a next-generation front-end testing tool built for the modern web. 
@@ -304,58 +305,36 @@ cy.scrollTo():
 -- control the duration of the scroll (in ms) { duration: 5*1000 })
 
 
-How to multiple select dropdown:
+Use of multiple select drop down:
+--------------------------------
+-- For this purpose we will use the multiple with array of elements that we want to select.
+-- .select(['apples', 'oranges', 'bananas'])
 
 
-How to select value in searchable dropdown:
-
-
-How to handle alerts:
+Use of multiple select hierarchal menu items:
+----------------------------------------------
+-- If the menu has hover property and open upon hovering the mouse then we will use invoke('show') method.
+-- This will first show the menu and submenu and then click the link.
 
 
 How to upload File:
+-------------------
+-- first of all use the command to install a library 'npm install --save-dev cypress-file-upload'
+-- then import this in command.js 'import 'cypress-file-upload' 
+-- now in order to upload the file put it under the fixture folder and give the name to the .attachfile('filename') method.
+-- after that it depends on the functionality of the website how it handle the file.
 
 
+How to select value in searchable dropdown:
+-------------------------------------------
+-- for this first of all check the current value in drop down.
+-- click the drop down to expand.
+-- now search for the value
+-- if the value exist then select that value and then recheck the current value in drop down.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+How to handle alerts:
+---------------------
+-- In cypress, alerts are handled by default so dont have to click ok on the prompt.
+-- But in order to handle the confirmation box by inputting some text we have to handle this at our own.
+-- we need to use the cy.on('window:confirm', call back function) to click on the cancel by returning the false.
+-- In order to use the prompt alert we first calll the ct.on(window, call back with cy.stub().returns())
