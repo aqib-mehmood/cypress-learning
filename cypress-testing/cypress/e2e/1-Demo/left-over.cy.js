@@ -1,9 +1,10 @@
 /// <reference types="Cypress"/>
 
 describe('Test Suite 01', () => {
-    before(() => {
-        cy.visit('https://example.cypress.io/commands/actions')
-    })
+    // before(() => {
+    //     // cy.visit('https://example.cypress.io/commands/actions')
+
+    // })
     // it('use of type command', () => {
     //     // cy.get('.action-email').type('fake@email.com').should('have.value', 'fake@email.com')
 
@@ -225,52 +226,163 @@ describe('Test Suite 01', () => {
     // })
 
 
-    // it('use of select commands', () => {
-        // cy.get('#scroll-horizontal button')
-        //     .should('not.be.visible')
+    // it('use of scrollIntoView commands', () => {
+    // cy.get('#scroll-horizontal button')
+    //     .should('not.be.visible')
 
-        // scroll the button into view, as if the user had scrolled
-        // cy.get('#scroll-horizontal button').scrollIntoView()
-        //     .should('be.visible')
+    // scroll the button into view, as if the user had scrolled
+    // cy.get('#scroll-horizontal button').scrollIntoView()
+    //     .should('be.visible')
 
-        // cy.get('#scroll-vertical button')
-        //     .should('not.be.visible')
+    // cy.get('#scroll-vertical button')
+    //     .should('not.be.visible')
 
-        // Cypress handles the scroll direction needed
-        // cy.get('#scroll-vertical button').scrollIntoView()
-        //     .should('be.visible')
+    // Cypress handles the scroll direction needed
+    // cy.get('#scroll-vertical button').scrollIntoView()
+    //     .should('be.visible')
 
-        // cy.get('#scroll-both button')
-        //     .should('not.be.visible')
+    // cy.get('#scroll-both button')
+    //     .should('not.be.visible')
 
-        // // Cypress knows to scroll to the right and down
-        // cy.get('#scroll-both button').scrollIntoView()
-        //     .should('be.visible')
+    // // Cypress knows to scroll to the right and down
+    // cy.get('#scroll-both button').scrollIntoView()
+    //     .should('be.visible')
 
     // })
 
 
-    it('use of select commands', () => {
-        // if you chain .scrollTo() off of cy, we will
-        // scroll the entire window
-        cy.scrollTo('bottom').wait(5*1000)
+    // it('use of select commands', () => {
+    // if you chain .scrollTo() off of cy, we will
+    // scroll the entire window
+    // cy.scrollTo('bottom').wait(5*1000)
 
-        // cy.get('#scrollable-horizontal').scrollTo('right')
+    // cy.get('#scrollable-horizontal').scrollTo('right')
 
-        // // or you can scroll to a specific coordinate:
-        // // (x axis, y axis) in pixels
-        // cy.get('#scrollable-vertical').scrollTo(250, 250)
+    // // or you can scroll to a specific coordinate:
+    // // (x axis, y axis) in pixels
+    // cy.get('#scrollable-vertical').scrollTo(250, 250)
 
-        // // or you can scroll to a specific percentage
-        // // of the (width, height) of the element
-        // cy.get('#scrollable-both').scrollTo('75%', '25%')
+    // // or you can scroll to a specific percentage
+    // // of the (width, height) of the element
+    // cy.get('#scrollable-both').scrollTo('75%', '25%')
 
-        // // control the easing of the scroll (default is 'swing')
-        // cy.get('#scrollable-vertical').scrollTo('center', { easing: 'linear', duration: 20*1000 })
+    // // control the easing of the scroll (default is 'swing')
+    // cy.get('#scrollable-vertical').scrollTo('center', { easing: 'linear', duration: 20*1000 })
 
-        // // control the duration of the scroll (in ms)
-        // cy.get('#scrollable-both').scrollTo('center', { duration: 5*1000 })
+    // // control the duration of the scroll (in ms)
+    // cy.get('#scrollable-both').scrollTo('center', { duration: 5*1000 })
+    // })
 
+    // it('select item from hierarchal drop down', () => {
+    //     // visiting the website
+    //     cy.visit('https://www.bahria.edu.pk/')
+
+    //     // now getting the menu item on which we want to proceed
+    //     cy.get('#menu-item-1155 > :nth-child(1)').should('be.visible')
+
+    //     // now we are using the invoke show to show the menu as the menu is only show upon hovering
+    //     cy.get('.menu-item-1155 > ul.sub-menu').invoke('show')
+
+    //     // now showing the submenu items using invoke 
+    //     cy.get('#menu-item-5534 > ul.sub-menu').invoke('show')
+
+    //     // clicking the whole area but not open the link
+    //     cy.get('#menu-item-5539').click()
+
+    //     // clicking the link and it will open in new tab
+    //     cy.get('#menu-item-5539 > a').click()
+
+    // })
+
+
+
+    it('How to handle simple alerts', () => {
+        // visiting the website
+        cy.visit('http://testphp.vulnweb.com/').then(() => {
+            cy.get('[name="searchFor"]').type('<script>alert("I am alert")</script>')
+            cy.get('[name="goButton"]').click()
+            cy.url().should('contain', '/search.php?test=query')
+
+            // confirmation of text on alert pop-up
+            cy.on('window:alert', (txt) => {
+                // cy.log('I am in window:alert')
+                expect(txt).to.contain('I am alert')
+                // cy.log('I am out of window:alert')
+            })
+        })
     })
+
+
+    // it('How to handle confirmation alerts', () => {
+    //     // visiting the website
+    //     cy.visit('https://the-internet.herokuapp.com/javascript_alerts').then(() => {
+    //         cy.get(':nth-child(2) > button').click()
+
+    //         // clicking the cancel button
+    //         cy.on('window:confirm', () => {
+    //             // cy.log('You clicked the cancel button')
+    //             return false
+    //         })
+
+    //     })
+    // })
+
+    // it('How to handle Prompts alerts', () => {
+    //     // visiting the website
+    //     cy.visit('https://the-internet.herokuapp.com/javascript_alerts')
+
+    //     // now inputting the hello world and clicking ok.
+    //     cy.window().then((win) => {
+    //         cy.stub(win, 'prompt').returns('hello world')
+    //         cy.get(':nth-child(3) > button').click()
+            
+    //     })
+    //     cy.get('#result').should('contain', 'hello world')
+    // })
+
+    // it('How to Upload files', () => {
+    //     // filename variable
+    //     let filename = 'file.pdf'
+    //     // visiting the website
+    //     cy.visit('http://www.csm-testcenter.org/test?do=show&subdo=common&test=file_upload')
+
+    //     // attaching the file using the cypress-file-upload library
+    //     cy.get(':nth-child(3) > form > table > tbody > :nth-child(1) > [align="left"] > input').attachFile(filename)
+
+    //     // clicking the submit button
+    //     cy.get(':nth-child(3) > form > table > tbody > :nth-child(3) > [align="left"] > #button').click()
+
+    //     // checking the new url 
+    //     cy.url().should('contain','csm-testcenter.org/test')
+
+    //     // checking the filename to ensure file upload successfully
+    //     cy.get(':nth-child(1) > [align="left"]').should('contain', filename)        
+    // })
+
+
+    // it.only('How to select value in searchable dropdown', () => {
+    //     // visiting the website
+    //     cy.visit('https://www.cssscript.com/demo/bootstrap-searchable-dropdown-fstdropdown/')
+
+    //     // taking the search value in var
+    //     let search_val = 'Two'
+
+    //     // initially checking the selected drop down
+    //     cy.get(':nth-child(6) > .fstdropdown > .fstselected').should('contain', 'Select option')
+
+    //     // clicking the dropdown
+    //     cy.get(':nth-child(6) > .fstdropdown > .fstselected').click().wait(1000)
+
+    //     // seraching for the valu
+    //     cy.get(':nth-child(6) > .fstdropdown > .fstsearch').type(search_val)
+
+    //     // getting the searched result
+    //     cy.get('.hover').click()
+
+    //     // confirming the value in the dropdown
+    //     cy.get(':nth-child(6) > .fstdropdown > .fstselected').should('contain', search_val)
+    // })
+
+
 
 })
