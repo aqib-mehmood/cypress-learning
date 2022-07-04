@@ -1,10 +1,10 @@
 /// <reference types="Cypress"/>
 
 describe('Test Suite 01', () => {
-    // before(() => {
-    //     // cy.visit('https://example.cypress.io/commands/actions')
+    before(() => {
+        cy.visit('https://example.cypress.io/commands/actions')
 
-    // })
+    })
     // it('use of type command', () => {
     //     // cy.get('.action-email').type('fake@email.com').should('have.value', 'fake@email.com')
 
@@ -24,22 +24,22 @@ describe('Test Suite 01', () => {
     //     .should('have.value', 'disabled error checking')
     // })
 
-    // it('use of focus command', () => {
-    //     // use of focus(), return the focused element.
-    //     // also perform action on that focus element.
-    //     cy.get('.action-focus').focus()
-    //         .should('have.class', 'focus')
-    //         .prev().should('have.attr', 'style', 'color: orange;')
-    // })
+    it('use of focus command', () => {
+        // use of focus(), return the focused element.
+        // also perform action on that focus element.
+        cy.get('.action-focus').focus()
+            .should('have.class', 'focus')
+            .prev().should('have.attr', 'style', 'color: orange;')
+    })
 
-    // it('use of blur command', () => {
-    //     // use of blur(), prev() immediate previous element 
-    //     // blur is opposite to focus.
-    //     // blur mean after focusing the element perform action then blur that element means move the cursor.
-    //     cy.get('.action-blur').type('About to blur').blur()
-    //         // .should('have.class', 'error')
-    //         // .prev().should('have.attr', 'style', 'color: red;')
-    // })
+    it.only('use of blur command', () => {
+        // use of blur(), prev() immediate previous element 
+        // blur is opposite to focus.
+        // blur mean after focusing the element perform action then blur that element means move the cursor.
+        cy.get('.action-blur').type('About to blur').blur()
+            // .should('have.class', 'error')
+            // .prev().should('have.attr', 'style', 'color: red;')
+    })
 
 
     // it('use of clear command', () => {
@@ -134,14 +134,14 @@ describe('Test Suite 01', () => {
     // })
 
 
-    // it('use of trigger and invoke click', () => {
-    //     // To trigger an event on a DOM element, use the .trigger() command.
-    //     cy.get('.trigger-input-range')
-    //         .invoke('val', 25)
-    //         .trigger('change')
-    //         .get('input[type=range]').siblings('p')
-    //         .should('have.text', '25')
-    // })
+    it('use of trigger and invoke click', () => {
+        // To trigger an event on a DOM element, use the .trigger() command.
+        cy.get('.trigger-input-range')
+            .invoke('val', 25)
+            .trigger('change')
+            .get('input[type=range]').siblings('p')
+            .should('have.text', '25')
+    })
 
 
     // it('use of check command', () => {
@@ -273,26 +273,26 @@ describe('Test Suite 01', () => {
     // cy.get('#scrollable-both').scrollTo('center', { duration: 5*1000 })
     // })
 
-    // it('select item from hierarchal drop down', () => {
-    //     // visiting the website
-    //     cy.visit('https://www.bahria.edu.pk/')
+    it('select item from hierarchal drop down', () => {
+        // visiting the website
+        cy.visit('https://www.bahria.edu.pk/')
 
-    //     // now getting the menu item on which we want to proceed
-    //     cy.get('#menu-item-1155 > :nth-child(1)').should('be.visible')
+        // now getting the menu item on which we want to proceed
+        cy.get('#menu-item-1155 > :nth-child(1)').should('be.visible')
 
-    //     // now we are using the invoke show to show the menu as the menu is only show upon hovering
-    //     cy.get('.menu-item-1155 > ul.sub-menu').invoke('show')
+        // now we are using the invoke show to show the menu as the menu is only show upon hovering
+        cy.get('.menu-item-1155 > ul.sub-menu').invoke('show')
 
-    //     // now showing the submenu items using invoke 
-    //     cy.get('#menu-item-5534 > ul.sub-menu').invoke('show')
+        // now showing the submenu items using invoke 
+        cy.get('#menu-item-5534 > ul.sub-menu').invoke('show')
 
-    //     // clicking the whole area but not open the link
-    //     cy.get('#menu-item-5539').click()
+        // clicking the whole area but not open the link
+        cy.get('#menu-item-5539').click()
 
-    //     // clicking the link and it will open in new tab
-    //     cy.get('#menu-item-5539 > a').click()
+        // clicking the link and it will open in new tab
+        cy.get('#menu-item-5539 > a').click()
 
-    // })
+    })
 
 
 
@@ -313,76 +313,91 @@ describe('Test Suite 01', () => {
     })
 
 
-    // it('How to handle confirmation alerts', () => {
-    //     // visiting the website
-    //     cy.visit('https://the-internet.herokuapp.com/javascript_alerts').then(() => {
-    //         cy.get(':nth-child(2) > button').click()
+    it('How to handle confirmation alerts', () => {
+        // visiting the website
+        cy.visit('https://the-internet.herokuapp.com/javascript_alerts').then(() => {
+            cy.get(':nth-child(2) > button').click()
 
-    //         // clicking the cancel button
-    //         cy.on('window:confirm', () => {
-    //             // cy.log('You clicked the cancel button')
-    //             return false
-    //         })
+            // clicking the cancel button
+            cy.on('window:confirm', () => {
+                // cy.log('You clicked the cancel button')
+                return false
+            })
 
-    //     })
-    // })
+        })
+    })
 
-    // it('How to handle Prompts alerts', () => {
-    //     // visiting the website
-    //     cy.visit('https://the-internet.herokuapp.com/javascript_alerts')
+    it('How to handle Prompts alerts', () => {
+        // visiting the website
+        cy.visit('https://the-internet.herokuapp.com/javascript_alerts')
 
-    //     // now inputting the hello world and clicking ok.
-    //     cy.window().then((win) => {
-    //         cy.stub(win, 'prompt').returns('hello world')
-    //         cy.get(':nth-child(3) > button').click()
+        // now inputting the hello world and clicking ok.
+        cy.window().then((win) => {
+            cy.stub(win, 'prompt').returns('hello world')
+            cy.get(':nth-child(3) > button').click()
             
-    //     })
-    //     cy.get('#result').should('contain', 'hello world')
-    // })
+        })
+        cy.get('#result').should('contain', 'hello world')
+    })
 
-    // it('How to Upload files', () => {
-    //     // filename variable
-    //     let filename = 'file.pdf'
-    //     // visiting the website
-    //     cy.visit('http://www.csm-testcenter.org/test?do=show&subdo=common&test=file_upload')
+    it('How to Upload files', () => {
+        // filename variable
+        let filename = 'file.pdf'
+        // visiting the website
+        cy.visit('http://www.csm-testcenter.org/test?do=show&subdo=common&test=file_upload')
 
-    //     // attaching the file using the cypress-file-upload library
-    //     cy.get(':nth-child(3) > form > table > tbody > :nth-child(1) > [align="left"] > input').attachFile(filename)
+        // attaching the file using the cypress-file-upload library
+        cy.get(':nth-child(3) > form > table > tbody > :nth-child(1) > [align="left"] > input').attachFile(filename)
 
-    //     // clicking the submit button
-    //     cy.get(':nth-child(3) > form > table > tbody > :nth-child(3) > [align="left"] > #button').click()
+        // clicking the submit button
+        cy.get(':nth-child(3) > form > table > tbody > :nth-child(3) > [align="left"] > #button').click()
 
-    //     // checking the new url 
-    //     cy.url().should('contain','csm-testcenter.org/test')
+        // checking the new url 
+        cy.url().should('contain','csm-testcenter.org/test')
 
-    //     // checking the filename to ensure file upload successfully
-    //     cy.get(':nth-child(1) > [align="left"]').should('contain', filename)        
-    // })
-
-
-    // it.only('How to select value in searchable dropdown', () => {
-    //     // visiting the website
-    //     cy.visit('https://www.cssscript.com/demo/bootstrap-searchable-dropdown-fstdropdown/')
-
-    //     // taking the search value in var
-    //     let search_val = 'Two'
-
-    //     // initially checking the selected drop down
-    //     cy.get(':nth-child(6) > .fstdropdown > .fstselected').should('contain', 'Select option')
-
-    //     // clicking the dropdown
-    //     cy.get(':nth-child(6) > .fstdropdown > .fstselected').click().wait(1000)
-
-    //     // seraching for the valu
-    //     cy.get(':nth-child(6) > .fstdropdown > .fstsearch').type(search_val)
-
-    //     // getting the searched result
-    //     cy.get('.hover').click()
-
-    //     // confirming the value in the dropdown
-    //     cy.get(':nth-child(6) > .fstdropdown > .fstselected').should('contain', search_val)
-    // })
+        // checking the filename to ensure file upload successfully
+        cy.get(':nth-child(1) > [align="left"]').should('contain', filename)        
+    })
 
 
+    it('How to select value in searchable dropdown', () => {
+        // visiting the website
+        cy.visit('https://www.cssscript.com/demo/bootstrap-searchable-dropdown-fstdropdown/')
+
+        // taking the search value in var
+        let search_val = 'Third'
+
+        // initially checking the selected drop down
+        cy.get(':nth-child(6) > .fstdropdown > .fstselected').should('contain', 'Select option')
+
+        // clicking the dropdown
+        cy.get(':nth-child(6) > .fstdropdown > .fstselected').click().wait(1000)
+
+        // seraching for the valu
+        cy.get(':nth-child(6) > .fstdropdown > .fstsearch').type(search_val)
+
+        // getting the searched result
+        cy.get('.hover').click()
+
+        // confirming the value in the dropdown
+        cy.get(':nth-child(6) > .fstdropdown > .fstselected').should('contain', search_val)
+    })
+
+    it('Responsiveness of a website', () => {
+        // checking for the different viewport
+        cy.viewport("ipad-mini")
+        cy.visit('https://github.com/')
+        cy.scrollTo("bottom", { duration: 60*1000 })
+
+        // checking for the other viewport
+        cy.viewport("macbook-16")
+        cy.visit('https://github.com/')
+        cy.scrollTo("bottom", { duration: 60*1000 })
+        cy.scrollTo('bottom')
+
+        // from botton to top
+        cy.scrollTo("top", { duration: 60*1000 })
+        
+    })
 
 })
