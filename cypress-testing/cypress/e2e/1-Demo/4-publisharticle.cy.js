@@ -19,66 +19,66 @@ describe('Publishing Article test suite', () => {
     it('go to publish articel form and enter data to publish it', () => {
         let articledata = [
             {
-                "title": "Article lno Oneee",
+                "title": "This is one Article as a no Oneeeeee",
                 "about": "This is all about article number Oneee",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "welcome"
             },
             {
-                "title": "Article no twooo",
+                "title": "Now Article as a no tewoooe",
                 "about": "This is all about article number twooo",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "introduction"
             },
 
             {
-                "title": "Article no threee",
+                "title": "New Article no threeeee",
                 "about": "This is all about article number threee",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "welcome"
             },
 
             {
-                "title": "Article no fourrr",
+                "title": "New Article no fourerr",
                 "about": "This is all about article number fourrr",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "introduction"
             },
             {
-                "title": "Article no fiveee",
+                "title": "New Article no fiveeee",
                 "about": "This is all about article number fiveee",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "introduction"
             },
             {
-                "title": "Article no sixxx",
+                "title": "New Article no sixexx",
                 "about": "This is all about article number sixxx",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "welcome"
             },
             {
-                "title": "Article no sevennn",
+                "title": "New Article no seevennn",
                 "about": "This is all about article number sevennn",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "introduction"
             },
             {
-                "title": "Article no eightttt",
+                "title": "New Article no eeightttt",
                 "about": "This is all about article number eightttt",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "introduction"
             },
             {
-                "title": "Article no ninnee",
+                "title": "New  Article no niinee",
                 "about": "This is all about article number ninnee",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "welcome"
             },
             
             {
-                "title": "Article no tennnn",
+                "title": "New Article no teeennn",
                 "about": "This is all about article number tennnn",
-                "body": "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
+                "body": "body body body",
                 "tags": "introduction"
             }
         ]
@@ -96,4 +96,9 @@ describe('Publishing Article test suite', () => {
             cy.get(':nth-child(2) > .nav-link').click()
         });
     });
+
+    it('Check the published article in the profile my article section', () => {
+        cy.get(':nth-child(4) > .nav-link').click()
+        cy.scrollTo('bottom', { duration: 5*1000 })
+    })
 })

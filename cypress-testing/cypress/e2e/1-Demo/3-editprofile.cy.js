@@ -1,7 +1,7 @@
 /// <reference types="Cypress"/>
 
 describe('Edit Profile test suite', () => {
-    const auth_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1a2FzQHVrcyIsInVzZXJuYW1lIjoibG92ZWx5IiwiaWF0IjoxNjU3NTMyMTI5LCJleHAiOjE2NjI3MTYxMjl9.2PPODpMqalZ9gLAWAGQfgz179JBaRF1C0omWK9w9JwA'
+    // const auth_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1a2FzQHVrcyIsInVzZXJuYW1lIjoibG92ZWx5IiwiaWF0IjoxNjU3NTMyMTI5LCJleHAiOjE2NjI3MTYxMjl9.2PPODpMqalZ9gLAWAGQfgz179JBaRF1C0omWK9w9JwA'
     before(() => {
         cy.visit('https://react-redux.realworld.io/')
     })
