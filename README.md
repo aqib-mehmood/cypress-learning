@@ -338,3 +338,22 @@ How to handle alerts:
 -- But in order to handle the confirmation box by inputting some text we have to handle this at our own.
 -- we need to use the cy.on('window:confirm', call back function) to click on the cancel by returning the false.
 -- In order to use the prompt alert we first calll the ct.on(window, call back with cy.stub().returns())
+
+
+Task:
+=====
+Target website: https://react-redux.realworld.io/
+
+Task 01: Write testcases for automation.
+-- https://docs.google.com/spreadsheets/d/1LVkwbK4DX7WXLlhDlJoku2lAw5mBheCwITaSmomGC6Q/edit?usp=sharing
+
+Task 02: Write test automation script with Cypress.
+-- Signup
+-- Login with different values for validation.
+-- Edit your information.
+-- Publish 10-15 articles using for loop.
+-- Check what you have published is showing in your profile.
+-- Mark Favourite and check it in your profile.
+-- Navigate to different page using pagination.
+-- Check Popular tags.
+
