@@ -1,4 +1,4 @@
-# Cypress Learning 
+## Welcome to GitHub Pages
 
 Cypress:
 ========
@@ -161,7 +161,7 @@ Hooks in Cypress:
             window.localStorage.setItem('token_variable_in_local_storage', value-of-token)
         })
 
-3- afer:
+3- after:
 --------
 -- Run one time after all the test finished.
 
