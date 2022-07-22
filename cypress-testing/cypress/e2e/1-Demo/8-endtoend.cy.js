@@ -6,10 +6,17 @@ describe('End to end flow test suite', () => {
     })
 
     it('open the singin page and enter credentials', () => {
+        // using the custom commands to signin
         cy.get(':nth-child(2) > .nav-link').click()
-        cy.get(':nth-child(1) > .form-control').clear().type('lukas@uks')
-        cy.get(':nth-child(2) > .form-control').clear().type('letsdoit')
-        cy.get('.btn').click()
+        cy.signin('lukas@uks', 'letsdoit')
+
+        // without using the custom commands
+        // cy.get(':nth-child(2) > .nav-link').click()
+        // cy.get(':nth-child(1) > .form-control').clear().type('lukas@uks')
+        // cy.get(':nth-child(2) > .form-control').clear().type('letsdoit')
+        // cy.get('.btn').click()
+
+        // waiting for the page to load fully
         cy.wait(2*1000)
         
     });
